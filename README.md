@@ -96,6 +96,7 @@ sitemaker/userdata/58491/<project>/     две фотографии пары
 | Кнопка календаря | файл `wedding.ics` и ссылка в `<a class="sm-cal-link">` (Google Календарь) |
 | Подпись «Made with love» | строка с `sm-madewithlove` в скрипте внизу `index.html` |
 | Шрифт заголовков | `sitemaker/css/fontcss/cormorant_garamond.min.css` — объявляет псевдоним `SMHeadersFont`; подключён строкой `<link id="headerStyle">` |
+| Фото заставки | `sitemaker/templates/template26/img/splash-photo.jpeg` — **тот же файл** стоит и в секции-фото (`data-type="11"`), заменится сразу в двух местах |
 | Шрифт текста | `sitemaker/css/fontcss/gilroy.min.css` — псевдоним `SMTextsFont`, `<link id="textStyle">` |
 
 **Таймер и календарь.** Заполняются из `d_mdate` автоматически. Важная
@@ -127,7 +128,13 @@ Android скачивает и предлагает импорт, поэтому 
 Gilroy. Оба подключены через псевдонимы `SMHeadersFont` и `SMTextsFont`, на которые
 завязаны классы шаблона, так что шрифт меняется подменой одного файла — разметку
 трогать не нужно. Cormorant разбит по подмножествам Unicode: браузер качает только
-нужную часть, кириллица весит 12 КБ. Исходный Caravan (`caravan_big.min.css` и
+нужную часть, кириллица весит 12 КБ. Заставка («Поздравляем!») набиралась отдельным псевдонимом `intro_font2` из
+`style_intro.min.css` — это тот же Caravan, но смена `SMHeadersFont` его не
+затрагивала. Правилом `.sm-opener .sm-intro_string-2` она привязана к общему
+псевдониму, так что шрифт заголовков теперь меняется в одном месте. Подзаголовок
+заставки остался на `intro_font1` (TenorSans) — это не опечатка, он там нужен.
+
+Исходный Caravan (`caravan_big.min.css` и
 `Caravan_big.*`) оставлен в репозитории — чтобы вернуть его, достаточно переключить
 `href` у `<link id="headerStyle">` обратно.
 

@@ -50,6 +50,10 @@
         transition:opacity .15s;
       }
       .sm-cal-link:hover,.sm-cal-link:focus-visible{opacity:1}
+      /* Заставка набрана псевдонимом intro_font2 (тот же Caravan), отдельным от
+         SMHeadersFont, поэтому смена заголовочного шрифта её не затрагивала.
+         Привязываем к общему псевдониму: теперь шрифт меняется в одном месте. */
+      .sm-opener .sm-intro_string-2{font-family:"SMHeadersFont",serif}
     </style>
 
         <script>
