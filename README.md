@@ -49,6 +49,7 @@ publish directory — корень репозитория.
 
 ```
 index.html                              страница приглашения
+wedding.ics                             событие для кнопки «Добавить в календарь»
 serve.sh                                локальный запуск
 .nojekyll                               отключает Jekyll на GitHub Pages
 sitemaker/css/                          style10, slick, fancybox, style_intro, шрифтовые css
@@ -91,6 +92,8 @@ sitemaker/userdata/58491/<project>/     две фотографии пары
 | Тексты блоков | атрибуты `data-sm-text` в `index.html` — текст лежит рядом, в самом теге |
 | Фотографии | `sitemaker/userdata/58491/<project>/images/`, splash — `sitemaker/templates/template26/img/splash-photo.jpeg` |
 | Телефон, ссылки | `href="tel:..."`, ссылка на карту Яндекса, вишлист — по тексту `index.html` |
+| Кнопка 2ГИС | ссылка в `<a id="btn-2gis">`; адрес задан поиском, можно заменить на точку `https://2gis.ru/moscow/geo/<долгота>,<широта>` |
+| Кнопка календаря | файл `wedding.ics` и ссылка в `<a class="sm-cal-link">` (Google Календарь) |
 | Подпись «Made with love» | строка с `sm-madewithlove` в скрипте внизу `index.html` |
 | Шрифт заголовков | `sitemaker/css/fontcss/cormorant_garamond.min.css` — объявляет псевдоним `SMHeadersFont`; подключён строкой `<link id="headerStyle">` |
 | Шрифт текста | `sitemaker/css/fontcss/gilroy.min.css` — псевдоним `SMTextsFont`, `<link id="textStyle">` |
@@ -103,6 +106,22 @@ sitemaker/userdata/58491/<project>/     две фотографии пары
 Названия месяца и года в разметке при этом статичны: если меняете `d_mdate`,
 поправьте заодно `data-sm-day`, `data-sm-tmonth-rod`, `data-sm-fyear` в первом
 экране и `data-sm-fyear` / `data-sm-tmonth` в блоке с календарём.
+
+**Кнопки «Открыть в 2ГИС» и «Добавить в календарь».** Обе работают без JS —
+в `href` лежат обычные ссылки. Скрипт внизу `index.html` только подменяет ссылку
+2ГИС на `intent://` в Android: система откроет приложение, а если его нет, Chrome
+уйдёт на `browser_fallback_url` без окна ошибки. На iOS и десктопе остаётся
+https-ссылка — установленное приложение перехватывает её само. Схему `dgis://`
+намеренно не используем: когда приложения нет, Safari показывает ошибку.
+
+Событие лежит в `wedding.ics` (01.10.2026, 14:30–22:00 МСК, время записано в UTC,
+напоминание за сутки). iOS и macOS открывают такой файл сразу в «Календаре»,
+Android скачивает и предлагает импорт, поэтому рядом стоит вторая, более
+привычная для Android ссылка на Google Календарь.
+
+> При смене даты правьте **три** места: `d_mdate` в `<head>`, `DTSTART`/`DTEND`
+> в `wedding.ics` и параметр `dates=` в ссылке на Google Календарь. Время конца
+> (22:00) взято по умолчанию — поменяйте, если нужно.
 
 **Шрифты.** Заголовки — Cormorant Garamond 400 (Google Fonts, OFL 1.1), текст —
 Gilroy. Оба подключены через псевдонимы `SMHeadersFont` и `SMTextsFont`, на которые

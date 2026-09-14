@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Wedding Invite//Nikita & Maria//RU
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:wedding-nikita-maria-20261001@invite
+DTSTAMP:20260914T000000Z
+DTSTART:20261001T113000Z
+DTEND:20261001T190000Z
+SUMMARY:Свадьба Никиты и Марии
+DESCRIPTION:Сбор гостей в 14:30. Приглашение: отк
+ ройте ссылку\, которую вам прислали.
+LOCATION:Усадьба Кусково\, г. Москва\, улица Юн
+ ости\, дом 2
+GEO:55.736941;37.809130
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Завтра свадьба Никиты и Марии
+END:VALARM
+END:VEVENT
+END:VCALENDAR
