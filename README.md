@@ -52,7 +52,7 @@ index.html                              страница приглашения
 serve.sh                                локальный запуск
 .nojekyll                               отключает Jekyll на GitHub Pages
 sitemaker/css/                          style10, slick, fancybox, style_intro, шрифтовые css
-sitemaker/fonts/                        Caravan_big, Gilroy, TenorSans, AstonScript, B52 …
+sitemaker/fonts/                        CormorantGaramond (заголовки), Gilroy (текст) и наследие шаблона
 sitemaker/js/                           jquery, slick, fancybox, jquery-ui, скролл-анимации
 sitemaker/images/                       общие иконки шаблонизатора
 sitemaker/templates/template26/          css/js/картинки шаблона (+ splash-photo)
@@ -92,6 +92,8 @@ sitemaker/userdata/58491/<project>/     две фотографии пары
 | Фотографии | `sitemaker/userdata/58491/<project>/images/`, splash — `sitemaker/templates/template26/img/splash-photo.jpeg` |
 | Телефон, ссылки | `href="tel:..."`, ссылка на карту Яндекса, вишлист — по тексту `index.html` |
 | Подпись «Made with love» | строка с `sm-madewithlove` в скрипте внизу `index.html` |
+| Шрифт заголовков | `sitemaker/css/fontcss/cormorant_garamond.min.css` — объявляет псевдоним `SMHeadersFont`; подключён строкой `<link id="headerStyle">` |
+| Шрифт текста | `sitemaker/css/fontcss/gilroy.min.css` — псевдоним `SMTextsFont`, `<link id="textStyle">` |
 
 **Таймер и календарь.** Заполняются из `d_mdate` автоматически. Важная
 особенность `main.js`: дата берётся, только если её год не меньше текущего —
@@ -101,6 +103,14 @@ sitemaker/userdata/58491/<project>/     две фотографии пары
 Названия месяца и года в разметке при этом статичны: если меняете `d_mdate`,
 поправьте заодно `data-sm-day`, `data-sm-tmonth-rod`, `data-sm-fyear` в первом
 экране и `data-sm-fyear` / `data-sm-tmonth` в блоке с календарём.
+
+**Шрифты.** Заголовки — Cormorant Garamond 400 (Google Fonts, OFL 1.1), текст —
+Gilroy. Оба подключены через псевдонимы `SMHeadersFont` и `SMTextsFont`, на которые
+завязаны классы шаблона, так что шрифт меняется подменой одного файла — разметку
+трогать не нужно. Cormorant разбит по подмножествам Unicode: браузер качает только
+нужную часть, кириллица весит 12 КБ. Исходный Caravan (`caravan_big.min.css` и
+`Caravan_big.*`) оставлен в репозитории — чтобы вернуть его, достаточно переключить
+`href` у `<link id="headerStyle">` обратно.
 
 ## Права
 
