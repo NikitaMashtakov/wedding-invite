@@ -27,11 +27,11 @@
             <title>Сайтмейкер</title>
             <!--    <link rel="stylesheet" href="sitemaker/css/style.min.css?v=--><!--">-->
             <link rel="stylesheet" href="sitemaker/css/style10.min.css">
-            <link rel="stylesheet" href="sitemaker/css/slick.css">
-            <link rel="stylesheet" href="sitemaker/css/fancybox.min.css">
+            
+            
             <script src="sitemaker/js/jquery-3.6.0.js" type="text/javascript"></script>
-            <script src="sitemaker/js/slick.min.js" type="text/javascript"></script>
-            <script src="sitemaker/js/fancybox.umd.js" type="text/javascript"></script>
+            
+            
             <link rel="stylesheet" id="headerStyle" href="sitemaker/css/fontcss/cormorant_garamond.min.css">
             <link rel="stylesheet" id="textStyle" href="sitemaker/css/fontcss/gilroy.min.css">
 
@@ -50,10 +50,21 @@
         transition:opacity .15s;
       }
       .sm-cal-link:hover,.sm-cal-link:focus-visible{opacity:1}
-      /* Заставка набрана псевдонимом intro_font2 (тот же Caravan), отдельным от
-         SMHeadersFont, поэтому смена заголовочного шрифта её не затрагивала.
-         Привязываем к общему псевдониму: теперь шрифт меняется в одном месте. */
-      .sm-opener .sm-intro_string-2{font-family:"SMHeadersFont",serif}
+
+      /* Единственная оставшаяся анимация: первая фотография мягко проявляется
+         при загрузке. Не по скроллу — если скрипт не отработает, фото просто
+         видно. overflow:hidden держит лёгкий зум внутри рамки. */
+      /* Подсказка под формой анкеты: и про незаполненные поля, и про сбой отправки. */
+      .sm-rsvp-hint{
+        font-family:"SMTextsFont",sans-serif;font-weight:300;font-size:15px;line-height:1.45;
+        max-width:46ch;margin:14px auto 0;text-align:center;color:#384847;
+      }
+      .sm-rsvp-hint.is-error{color:#b3401a}
+      .sm-moment__wrapper-photo{overflow:hidden}
+      @keyframes sm-photo-in{from{opacity:0;transform:scale(1.05)}to{opacity:1;transform:none}}
+      @media (prefers-reduced-motion:no-preference){
+        .sm-moment__wrapper-photo_img{animation:sm-photo-in 1.3s cubic-bezier(.2,.6,.2,1) both}
+      }
     </style>
 
         <script>
@@ -69,7 +80,7 @@
     <div class="sm-mob-btn sm-hidden_slow">
         <div class="sm-button open-modal">Подтвердить присутствие</div>
     </div>
-    <section class="sm-main sm-edit jsScroll__scrolled" data-type="1" data-jsscroll="" data-jsscroll-slide-top="">
+    <section class="sm-main sm-edit jsScroll__scrolled" data-type="1">
         <picture class="sm-painted-show">
             <source srcset="sitemaker/templates/template26/img/main-mobile.webp?v=2" media="(max-width: 500px)">
             <img class="sm-main_img" src="sitemaker/templates/template26/img/main.webp" alt="img">
@@ -92,7 +103,7 @@
         </div>
     </section>
     <!-- Этот момент настал -->
-    <section class="sm-moment sm-edit" data-type="2" data-jsscroll="" data-jsscroll-slide-top="">
+    <section class="sm-moment sm-edit" data-type="2">
         <div class="sm-container">
             <div class="sm-moment__wrapper">
                 <div class="sm-moment__wrapper-decr">
@@ -107,7 +118,7 @@
         </div>
     </section>
     <!-- Свадьба состоится -->
-    <section class="sm-date sm-edit" data-type="3" data-jsscroll="" data-jsscroll-slide-top="">
+    <section class="sm-date sm-edit" data-type="3">
         <div class="sm-container">
             <div class="sm-date__titel color-10">
                 <h2 class="sm-cormorantRegular-70-30" data-sm-text="DATETIME_TITLE" title="Cвадьба состоится">Cвадьба состоится</h2>
@@ -134,7 +145,7 @@
         </div>
     </section>
     <!-- Локация -->
-    <section class="sm-location sm-edit" data-type="4" data-jsscroll="" data-jsscroll-slide-top="">
+    <section class="sm-location sm-edit" data-type="4">
         <div class="sm-container">
             <div class="sm-location__content">
                 <div class="sm-location__content-description">
@@ -158,7 +169,7 @@
         </div>
     </section>
     <!--тайминги-->
-    <section class="sm-timing sm-edit sm-hidden jsScroll__scrolled" data-type="5" data-jsscroll="" data-jsscroll-slide-top="">
+    <section class="sm-timing sm-edit sm-hidden jsScroll__scrolled" data-type="5">
 
         <div class="sm-container">
             <h2 class="sm-cormorantRegular-70-30" data-sm-text="TIMING_TITLE"></h2>
@@ -252,7 +263,7 @@
     </section>
     <!--/тайминги-->
     <!-- дресс-код -->
-    <section class="sm-dress-code sm-edit" data-type="6" data-jsscroll="" data-jsscroll-slide-top="">
+    <section class="sm-dress-code sm-edit" data-type="6">
         <div class="sm-container">
             <div class="sm-dress-code_wrap">
                 <div class="sm-dress-code_wrap-top">
@@ -268,7 +279,7 @@
         </div>
     </section>
     <!--до нашей свадьбы осталось-->
-    <section class="sm-timer sm-edit" data-type="7" data-jsscroll="" data-jsscroll-slide-top="">
+    <section class="sm-timer sm-edit" data-type="7">
         <div class="sm-container">
             <div class="sm-timer__container">
                 <h2 class="sm-timer__container-titel sm-cormorantRegular-70-30 color-1" data-sm-text="TIMER_TITLE" title="До нашей свадьбы осталось">До нашей свадьбы осталось</h2>
@@ -326,7 +337,7 @@
         </div>
     </section>
     <!-- Пожелания -->
-    <section class="sm-wishes sm-edit" data-type="8" data-jsscroll="" data-jsscroll-slide-top="">
+    <section class="sm-wishes sm-edit" data-type="8">
         <picture class="sm-painted-show">
             <source srcset="sitemaker/templates/template26/img/wishes-mobile.webp?v=2" media="(max-width: 500px)">
             <img class="sm-wishes_img" src="sitemaker/templates/template26/img/wishes.webp" alt="img">
@@ -353,7 +364,7 @@
         </div>
     </section>
     <!-- связаться с нами -->
-    <section class="sm-contact sm-edit" data-type="9" data-jsscroll="" data-jsscroll-slide-top="">
+    <section class="sm-contact sm-edit" data-type="9">
         <img class="sm-contact_img" src="sitemaker/templates/template26/img/contacts.jpeg" alt="contact">
 
         <div class="sm-container">
@@ -376,14 +387,14 @@
         </div>
     </section>
     <!-- Анкета гостя Форма -->
-    <section class="sm-questionnaire sm-edit" data-type="10" data-jsscroll="" data-jsscroll-slide-top="">
+    <section class="sm-questionnaire sm-edit" data-type="10">
         <div class="sm-questionnaire__container">
             <div class="sm-questionnaire__top">
                 <h2 class="sm-cormorantRegular-70-30 color-1" data-sm-text="ANKETA_TITLE" title="Присутствие">Присутствие</h2>
                 <div class="sm-questionnaire__top-line"></div>
                 <div class="sm-manropeBold-20-18 sm-questionnaire__top-text" data-sm-text="ANKETA_TEXT" title="Просим подтвердить своё присутствие на мероприятии до:">Просим подтвердить своё присутствие на мероприятии до:</div>
                 <div class="sm-cormorantRegular-50-30">
-                    <span data-sm-bday="">31</span> / <span data-sm-bmonth="">08</span> / <span data-sm-byear="">24</span>
+                    <span data-sm-bday="">10</span> / <span data-sm-bmonth="">10</span> / <span data-sm-byear="">26</span>
                 </div>
             </div>
             <div class="sm-questionnaire-btn sm-btn open-modal">Подтвердить</div>
@@ -416,14 +427,10 @@
                             </div>
                         </div>
                         <div class="sm-form__block" data-sm-anketa-toggle="">
-                            <div class="sm-manropeLight-20-18 color-1 sm-hidden" data-sm-text="ANKETA_DRINKS_QUESTION" title="Ваши предпочтения">Ваши предпочтения</div>
+                            <div class="sm-manropeLight-20-18 color-1" data-sm-text="ANKETA_DRINKS_QUESTION" title="Ваши предпочтения">Ваши предпочтения</div>
                             <div class="sm-form__drinks">
-                                <div class="sm-form__drinks-check mr-40px sm-hidden" data-sm-anketa="1">
-                                    <div class="sm-form_checkbox sm-manropeLight-20-18 color-1 ct-alcotpl">
-                                        <input class="sm-form_checkbox_input" type="checkbox" id="" name="alco[]" value="">
-                                        <span class="sm-form_checkbox_box"></span>
-                                        <label for="" data-sm-alcoitem=""></label>
-                                    </div>
+                                <div class="sm-form__drinks-check mr-40px" data-sm-anketa="1">
+                                    
                                 <div class="sm-form_checkbox sm-manropeLight-20-18 color-1">
                                         <input class="sm-form_checkbox_input" type="checkbox" id="alco10" name="alco[]" value="1">
                                         <span class="sm-form_checkbox_box"></span>
@@ -439,19 +446,11 @@
                                     </div><div class="sm-form_checkbox sm-manropeLight-20-18 color-1">
                                         <input class="sm-form_checkbox_input" type="checkbox" id="alco40" name="alco[]" value="4">
                                         <span class="sm-form_checkbox_box"></span>
-                                        <label for="alco40" data-sm-alcoitem="">Виски</label>
+                                        <label for="alco40" data-sm-alcoitem="">Коньяк</label>
                                     </div><div class="sm-form_checkbox sm-manropeLight-20-18 color-1">
                                         <input class="sm-form_checkbox_input" type="checkbox" id="alco50" name="alco[]" value="5">
                                         <span class="sm-form_checkbox_box"></span>
                                         <label for="alco50" data-sm-alcoitem="">Водка</label>
-                                    </div><div class="sm-form_checkbox sm-manropeLight-20-18 color-1">
-                                        <input class="sm-form_checkbox_input" type="checkbox" id="alco60" name="alco[]" value="6">
-                                        <span class="sm-form_checkbox_box"></span>
-                                        <label for="alco60" data-sm-alcoitem="">Джин</label>
-                                    </div><div class="sm-form_checkbox sm-manropeLight-20-18 color-1">
-                                        <input class="sm-form_checkbox_input" type="checkbox" id="alco70" name="alco[]" value="7">
-                                        <span class="sm-form_checkbox_box"></span>
-                                        <label for="alco70" data-sm-alcoitem="">Ром</label>
                                     </div><div class="sm-form_checkbox sm-manropeLight-20-18 color-1">
                                         <input class="sm-form_checkbox_input" type="checkbox" id="alco80" name="alco[]" value="8">
                                         <span class="sm-form_checkbox_box"></span>
@@ -460,13 +459,13 @@
                             </div>
                         </div>
                     </div>
-                    <button class="sm-btn sm-hidden" data-sm-anketa-send="1">Отправить</button>
+                    <button class="sm-btn" data-sm-anketa-send="1">Отправить</button>
                 </form>
             </div>
         </div>
     </section>
     <!-- Фото -->
-    <section class="sm-bg-image sm-edit" data-type="11" data-jsscroll="" data-jsscroll-slide-top="">
+    <section class="sm-bg-image sm-edit" data-type="11">
         <img class="sm-bg-image_photo" src="sitemaker/userdata/58491/4f08bb0b61ebdf82793ef023aaaba680/images/us.jpeg" data-sm-src="SPLASH" alt="img">
     </section>
     <!-- Модальные окна -->
@@ -507,14 +506,10 @@
                         </div>
                     </div>
                     <div class="sm-form__block" data-sm-anketa-toggle="">
-                        <div class="sm-manropeLight-20-18 color-1 sm-hidden" data-sm-text="ANKETA_DRINKS_QUESTION" title="Ваши предпочтения">Ваши предпочтения</div>
+                        <div class="sm-manropeLight-20-18 color-1" data-sm-text="ANKETA_DRINKS_QUESTION" title="Ваши предпочтения">Ваши предпочтения</div>
                         <div class="sm-form__drinks">
-                            <div class="sm-form__drinks-check mr-40px sm-hidden" data-sm-anketa="1">
-                                    <div class="sm-form_checkbox sm-manropeLight-20-18 color-1 ct-alcotpl">
-                                        <input class="sm-form_checkbox_input" type="checkbox" id="" name="alco[]" value="">
-                                        <span class="sm-form_checkbox_box"></span>
-                                        <label for="" data-sm-alcoitem=""></label>
-                                    </div>
+                            <div class="sm-form__drinks-check mr-40px" data-sm-anketa="1">
+                                    
                             <div class="sm-form_checkbox sm-manropeLight-20-18 color-1">
                                         <input class="sm-form_checkbox_input" type="checkbox" id="alco11" name="alco[]" value="1">
                                         <span class="sm-form_checkbox_box"></span>
@@ -530,19 +525,11 @@
                                     </div><div class="sm-form_checkbox sm-manropeLight-20-18 color-1">
                                         <input class="sm-form_checkbox_input" type="checkbox" id="alco41" name="alco[]" value="4">
                                         <span class="sm-form_checkbox_box"></span>
-                                        <label for="alco41" data-sm-alcoitem="">Виски</label>
+                                        <label for="alco41" data-sm-alcoitem="">Коньяк</label>
                                     </div><div class="sm-form_checkbox sm-manropeLight-20-18 color-1">
                                         <input class="sm-form_checkbox_input" type="checkbox" id="alco51" name="alco[]" value="5">
                                         <span class="sm-form_checkbox_box"></span>
                                         <label for="alco51" data-sm-alcoitem="">Водка</label>
-                                    </div><div class="sm-form_checkbox sm-manropeLight-20-18 color-1">
-                                        <input class="sm-form_checkbox_input" type="checkbox" id="alco61" name="alco[]" value="6">
-                                        <span class="sm-form_checkbox_box"></span>
-                                        <label for="alco61" data-sm-alcoitem="">Джин</label>
-                                    </div><div class="sm-form_checkbox sm-manropeLight-20-18 color-1">
-                                        <input class="sm-form_checkbox_input" type="checkbox" id="alco71" name="alco[]" value="7">
-                                        <span class="sm-form_checkbox_box"></span>
-                                        <label for="alco71" data-sm-alcoitem="">Ром</label>
                                     </div><div class="sm-form_checkbox sm-manropeLight-20-18 color-1">
                                         <input class="sm-form_checkbox_input" type="checkbox" id="alco81" name="alco[]" value="8">
                                         <span class="sm-form_checkbox_box"></span>
@@ -551,7 +538,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="sm-btn sm-hidden" data-sm-anketa-send="1">Отправить</button>
+                <button class="sm-btn" data-sm-anketa-send="1">Отправить</button>
             </form>
         </div>
     </div>
@@ -571,7 +558,7 @@
     </div>
 </main>
 <!-- Футер -->
-<section class="sm-footer sm-edit" data-type="12" data-jsscroll="" data-jsscroll-slide-top="">
+<section class="sm-footer sm-edit" data-type="12">
     <picture class="sm-painted-show">
         <source srcset="sitemaker/templates/template26/img/footer-mobile.webp?v=2" media="(max-width: 500px)">
         <img class="sm-footer_photo" src="sitemaker/templates/template26/img/footer.webp" alt="img">
@@ -590,7 +577,7 @@
     </div>
 </section>
 
-<script src="sitemaker/js/template_compiled_mini.js"></script><script src="sitemaker/templates/template26/js/main.js"></script>
+<script src="sitemaker/templates/template26/js/main.js"></script>
         
         <script>
             if ( window.location === window.parent.location && window.parent.location.origin === 'https://wedwed.ru')
@@ -607,10 +594,7 @@
 
 
                 function initAll(){
-                    $.each($('.slick-initialized'),function(){
-                        $(this).slick("unslick");
-                    })
-
+                    
                     setTimeout(function () {
                         if( $('.ct-demonstration', window.parent.document).length > 0) {
                             $.each(parent.offsections,function(k,v){
@@ -622,14 +606,11 @@
                                 $('.sm-data__confirm-btn, .scrollto, [data-src="#sm-mod"], .sm-open-modal, .open-modal, #open-modal-form').toggleClass('sm-hidden',true);
                                 $('.sm-madewithlove').toggleClass('sm-shortmade',true);
                             }
-                                                        var script = document.createElement('script');
-                            script.type = 'text/javascript';
-                            script.src = 'sitemaker/js/js-scroll-animations.min.js';
-                            $("body").append(script);
-                            $('html').addClass('animating');
+                                                        /* Анимации появления по скроллу убраны: контент показывается сразу.
+                               Раньше здесь подключался js-scroll-animations.min.js и вешался
+                               класс animating, из-за которого секции ждали скролла (opacity:0),
+                               а текст всплывал с задержками 2-3 с. */
                             $('body').toggleClass('sm-editor_preview', false);
-                            const jsScroll = jsScrollAnimations();
-                            jsScroll.init();
                             
                             setTimeout(function () {
                                 $('body').toggleClass('sm-loader', false);
@@ -643,22 +624,7 @@
                         var parent2 = window.parent.document;
                         $(parent2).find('.ct-device_switcher').toggleClass('ct-hidden', false);
 
-                        Fancybox.bind('[data-fancybox]', {
-                                touch: true,
-                                closeBtn: true,
-                                Thumbs: false,
-                                caption: false,
-                                autoScale: true,
-                                on : {
-                                    "reveal": (fancybox) => {
-                                        var slides = fancybox.carousel.slides;
-                                        $.each(slides,function(k,v){
-                                            $(v.el).toggleClass('sm-grayscale',$(v.thumbEl).hasClass('sm-grayscale'))
-                                        })
-                                    },
-                                }
-                            }
-                        );
+
                     }, 500)
 
                     console.log('StartAll from tloader')
@@ -754,25 +720,20 @@
 
                                 if (name != '' && answer > 0) {
                                     sending = true;
-
-                                    console.log('answer')
-                                    console.log(answer)
-                                    console.log(project)
-                                    console.log(name)
-                                    console.log(company)
-                                    console.log(JSON.stringify(alc))
-                                    console.log(quest);
-                                    $.post('sitemaker/ajax_alpha.php', {
-                                        action: 'answer',
+                                    /* Раньше уходило на sitemaker/ajax_alpha.php (сервер wedwed.ru).
+                                       Теперь — в Google-таблицу, см. sendRsvp внизу страницы.
+                                       sending сбрасывается там же, если отправка не удалась. */
+                                    sendRsvp({
+                                        name: name,
                                         answer: answer,
-                                        project: project,
-                                        data: name,
                                         company: company,
-                                        alco: JSON.stringify(alc),
-                                        quest: quest
-                                    }, function (data) {
-                                    })
-                                    thankYou();
+                                        alco: alc,
+                                        form: $(this).closest('form')[0]
+                                    }, function () { sending = false; });
+                                } else {
+                                    showRsvpHint($(this).closest('form')[0],
+                                        name === '' ? 'Пожалуйста, укажите имя и фамилию.'
+                                                    : 'Пожалуйста, выберите один из вариантов.');
                                 }
 
                                 return false;
@@ -781,59 +742,9 @@
                     }
                                     }
 
-                function ownUnSlick() {
-                    console.log('unslicking');
-                    $('.sm-own_wrapper-img.slick-initialized').slick('unslick')
-                }
-
                 var own_timer;
 
-
-
-                function ownSlick() { // Сюда надо вкорячить data-section проверку
-                    clearTimeout(own_timer);
-                    own_timer = setTimeout(function () {
-                        $.each($('.sm-own_wrapper-img'), function () {
-                            var that = $(this);
-                            var smim = that.find('img');
-                            var d = that.parents('.sm-edit').data('type')
-                            if (smim.length > 1 && typeof that.attr('data-asp') != 'undefined') {
-                                if (d > 1000) {
-                                    if (that.hasClass('slick-initialized')) {
-                                        that.slick('unslick')
-                                    }
-                                    if (smim.length > 1 && that.attr('data-asp') != '4' && that.attr('data-asp') != '6' && that.attr('data-asp') != '7') {
-                                        console.log(d+' slick')
-                                        that.slick({
-                                            dots: false,
-                                            infinite: true,
-                                            slidesToShow: 1,
-                                            adaptiveHeight: true,
-                                            slidesToScroll: 1,
-                                            prevArrow: "<div class='sm-sl-arrow sm-prev'></div>",
-                                            nextArrow: "<div class='sm-sl-arrow sm-next'></div>",
-                                        })
-                                    }
-                                }
-                            } else {
-                                that.hasClass('slick-initialized');
-                                if (d > 1000) {
-                                    if (that.hasClass('slick-initialized')) {
-                                        that.slick('unslick')
-                                    }
-                                }
-                            }
-                        })
-                    }, 1000)
-                }
-
-                $(window).on('resize',function(){
-                    if($('.sm-own_wrapper-img img').length > 1) {
-                        console.log('ownSlick from resize')
-                        ownSlick();
-                    }
-                })
-
+                
                 if (typeof window.parent.demo_view != 'undefined') { // для демо
                     var demo_view = window.parent.demo_view;
 
@@ -890,10 +801,10 @@
                 }})
             }
         </script>
-            <script src="sitemaker/js/jquery-ui.min.js"></script>
-    <script src="sitemaker/js/jquery.ui.touch-punch.min.js"></script>
+            
+    
 
-<link rel="stylesheet" href="sitemaker/css/style_intro.min.css">
+
 
         
 <div class="ct-demonstration" style="display:none"></div>
@@ -927,5 +838,78 @@
              'S.browser_fallback_url=' + encodeURIComponent(web) + ';end';
     a.removeAttribute('target');   // иначе остаётся пустая вкладка
   })();
+</script>
+
+<script>
+  /* ------------------------------------------------------------------ *
+   *  Анкета -> Google-таблица                                           *
+   *                                                                     *
+   *  Вставьте сюда адрес веб-приложения Apps Script (оканчивается на    *
+   *  /exec). Как его получить — в README, раздел «Анкета». Пока строка  *
+   *  пустая, ответы только пишутся в консоль браузера.                  *
+   * ------------------------------------------------------------------ */
+  var RSVP_ENDPOINT = '';
+
+  /* Подпись напитка берём из самой разметки, чтобы список в таблице
+     не разъехался со списком на странице. */
+  function drinkLabel(value) {
+    var input = document.querySelector('input[name="alco[]"][value="' + value + '"]');
+    if (!input) return String(value);
+    var label = document.querySelector('label[for="' + input.id + '"]');
+    return label ? label.textContent.trim() : String(value);
+  }
+
+  function showRsvpHint(form, text, isError) {
+    if (!form) return;
+    var box = form.querySelector('.sm-rsvp-hint');
+    if (!box) {
+      box = document.createElement('div');
+      box.className = 'sm-rsvp-hint';
+      form.appendChild(box);
+    }
+    box.textContent = text;
+    box.classList.toggle('is-error', isError !== false);
+    box.hidden = false;
+  }
+
+  function sendRsvp(data, onFail) {
+    var seen = {}, drinks = [];
+    (data.alco || []).forEach(function (v) {
+      if (seen[v]) return;            // обе формы на странице, значения могут повториться
+      seen[v] = 1;
+      drinks.push(drinkLabel(v));
+    });
+
+    var payload = {
+      name:      data.name,
+      attending: String(data.answer) === '1' ? 'Да' : 'Нет',
+      companion: data.company || '',
+      drinks:    drinks.join(', ')
+    };
+
+    if (!RSVP_ENDPOINT) {
+      console.warn('RSVP_ENDPOINT не задан — ответ никуда не отправлен:', payload);
+      thankYou();
+      return;
+    }
+
+    /* Content-Type: text/plain делает запрос «простым» — без preflight-запроса
+       OPTIONS, на который Apps Script не умеет отвечать. Тело всё равно JSON,
+       на стороне скрипта разбираем e.postData.contents. */
+    fetch(RSVP_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    }).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      thankYou();
+    }).catch(function (e) {
+      console.error('Анкета не отправлена:', e, payload);
+      if (onFail) onFail();
+      showRsvpHint(data.form,
+        'Не получилось отправить — проверьте интернет и попробуйте ещё раз. ' +
+        'Если не выходит, позвоните нам, телефоны есть выше.');
+    });
+  }
 </script>
 </body></html>

@@ -94,11 +94,6 @@ function CountBack(myDiv, secs) {
 
 
 function startAll() {
-    $('.sm-slider').slick({
-    });
-    $(".sm-slider").on('afterChange', function(event, slick, currentSlide){
-        $("#counter").text(currentSlide + 1);
-    });
     var year = 2024;
     var month = 9;
     var day = 23;
@@ -116,10 +111,6 @@ function startAll() {
 
     StartCountDown("timer", year + '/' + month + '/' + day);
     setMonthCalendar(year,month,day)
-
-    if (typeof initWishSlider != 'undefined') {
-        setTimeout(function(){initWishSlider();},1000);
-    }
 }
 
 function thankYou()
