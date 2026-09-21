@@ -25,15 +25,14 @@
             <meta name="color-scheme" content="only light">
             <meta name="supported-color-schemes" content="light">
             <title>Сайтмейкер</title>
-            <!--    <link rel="stylesheet" href="sitemaker/css/style.min.css?v=--><!--">-->
-            <link rel="stylesheet" href="sitemaker/css/style10.min.css">
+            <link rel="stylesheet" href="sitemaker/css/style10.css">
             
             
             <script src="sitemaker/js/jquery-3.6.0.js" type="text/javascript"></script>
             
             
-            <link rel="stylesheet" id="headerStyle" href="sitemaker/css/fontcss/cormorant_garamond.min.css">
-            <link rel="stylesheet" id="textStyle" href="sitemaker/css/fontcss/gilroy.min.css">
+            <link rel="stylesheet" id="headerStyle" href="sitemaker/css/fontcss/cormorant_garamond.css">
+            <link rel="stylesheet" id="textStyle" href="sitemaker/css/fontcss/gilroy.css">
 
     <style>
       /* Добавлено вручную: кнопки «Открыть в 2ГИС» и «Добавить в календарь».
@@ -63,11 +62,17 @@
          .sm-form__input{all:unset}, а all сбрасывает и display. Авторское
          правило перебивает браузерное [hidden]{display:none}, и поле оставалось
          видимым. Возвращаем скрытие с достаточной специфичностью. */
+      /* Квадратик и подпись чекбокса стояли вразнобой: в style10.css есть
+         правило «.modal-open .sm-form_checkbox, .sm-questionnaire-form
+         .sm-form_checkbox { align-items: start }», и его специфичность (0,2,0)
+         перебивала базовое align-items:center у .sm-form_checkbox. */
+      .sm-form .sm-form_checkbox{align-items:center}
+
       .sm-form .sm-own-answer[hidden]{display:none}
 
       .sm-rsvp-hint.is-error{color:#b3401a}
       /* Подложка блока контактов: полупрозрачная, чтобы фото просвечивало.
-         Специфичность выше шаблонной — style.min.css подключается ниже по документу. */
+         Специфичность выше шаблонной — style.css подключается ниже по документу. */
       .sm-contact .sm-contact__shell{background-color:#384847c9;border-color:#45493a75}
 
       /* Телефоны кликабельные: подчёркивание показывает, что по ним можно звонить.
@@ -101,7 +106,7 @@
         </script><style class="colors-styles"></style><style class="colors-styles-desktop">@media (min-width:500px){}</style><style class="colors-styles-mobile">@media (max-width:500px){}</style></head>
         
                 <body class="sm-template27 sm-color0 sm-scroll_type-1 sm-scroll_speed-1 sm-project-4f08bb0b61ebdf82793ef023aaaba680 sm-hfont-1" data-project-id="20282" data-lang="ru" >
-        <link rel="stylesheet" href="sitemaker/templates/template26/css/style.min.css">
+        <link rel="stylesheet" href="sitemaker/templates/template26/css/style.css">
 <main>
     <div class="sm-mob-btn sm-hidden_slow">
         <div class="sm-button open-modal">Подтвердить присутствие</div>

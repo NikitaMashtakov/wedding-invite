@@ -100,7 +100,7 @@ google-apps-script.gs                   бэкенд анкеты для Google-
 wedding.ics                             событие для кнопки «Добавить в календарь»
 serve.sh                                локальный запуск
 .nojekyll                               отключает Jekyll на GitHub Pages
-sitemaker/css/                          style10 + шрифтовые css
+sitemaker/css/                          style10.css + шрифтовые css (не минифицированы)
 sitemaker/fonts/                        Cormorant Garamond (заголовки), Gilroy (текст)
 sitemaker/js/jquery-3.6.0.js
 sitemaker/templates/template26/          css/js/картинки шаблона
@@ -156,8 +156,8 @@ node -e "const s=require('sharp');
 | Кнопка 2ГИС | ссылка в `<a id="btn-2gis">` |
 | Кнопка календаря | файл `wedding.ics` и ссылка на Google Календарь рядом с ней |
 | Адрес для анкеты | `RSVP_ENDPOINT` внизу `index.html` |
-| Шрифт заголовков | `sitemaker/css/fontcss/cormorant_garamond.min.css`, псевдоним `SMHeadersFont` |
-| Шрифт текста | `sitemaker/css/fontcss/gilroy.min.css`, псевдоним `SMTextsFont` |
+| Шрифт заголовков | `sitemaker/css/fontcss/cormorant_garamond.css`, псевдоним `SMHeadersFont` |
+| Шрифт текста | `sitemaker/css/fontcss/gilroy.css`, псевдоним `SMTextsFont` |
 
 > **При смене даты** правьте четыре места: `d_mdate` в `<head>`, день на первом
 > экране (`data-sm-day`, `data-sm-tmonth-rod`, `data-sm-fyear`), подписи года и

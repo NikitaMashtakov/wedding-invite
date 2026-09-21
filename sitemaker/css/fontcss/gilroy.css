@@ -1,0 +1,63 @@
+/* Gilroy как SMTextsFont. Оставлены только те начертания, которые реально
+   встречаются на странице (проверено по computed-стилям всех элементов),
+   и только формат woff — остальные форматы браузер всё равно не брал. */
+@font-face {
+  font-family: "SMTextsFont";
+  src:
+    local("Gilroy ExtraBold"),
+    local("Gilroy-ExtraBold"),
+    url(../../fonts/Gilroy-ExtraBold.woff) format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SMTextsFont";
+  src:
+    local("Gilroy Light"),
+    local("Gilroy-Light"),
+    url(../../fonts/Gilroy-Light.woff) format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SMTextsFont";
+  src:
+    local("Gilroy Regular"),
+    local("Gilroy-Regular"),
+    url(../../fonts/Gilroy-Regular.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SMTextsFont";
+  src:
+    local("Gilroy Medium"),
+    local("Gilroy-Medium"),
+    url(../../fonts/Gilroy-Medium.woff) format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SMTextsFont";
+  src:
+    local("Gilroy Bold"),
+    local("Gilroy-Bold"),
+    url(../../fonts/Gilroy-Bold.woff) format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SMTextsFont";
+  src:
+    local("Gilroy Thin"),
+    local("Gilroy-Thin"),
+    url(../../fonts/Gilroy-Thin.woff) format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
