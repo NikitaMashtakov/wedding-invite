@@ -27,10 +27,10 @@ function doPost(e) {
 
     sheet.appendRow([
       new Date(),
-      String(data.name || ''),
-      String(data.attending || ''),
-      String(data.companion || ''),
-      String(data.drinks || '')
+      safe_(data.name, 120),
+      safe_(data.attending, 20),
+      safe_(data.companion, 120),
+      safe_(data.drinks, 200)
     ]);
 
     return json_({ ok: true });
@@ -41,9 +41,25 @@ function doPost(e) {
   }
 }
 
-/** Открыть страницу /exec в браузере — быстрая проверка, что развёртывание живо. */
+/** Открыть /exec в браузере — проверка, что развёртывание живо.
+ *  Намеренно не отдаёт ничего из таблицы: адрес публичный. */
 function doGet() {
-  return json_({ ok: true, rows: getSheet_().getLastRow() - 1 });
+  return json_({ ok: true });
+}
+
+/**
+ * Защита от формульной инъекции. Адрес веб-приложения виден в исходном коде
+ * страницы, так что прислать сюда можно что угодно. Google Таблицы считают
+ * формулой всё, что начинается с = + - @, и вычисляют её, когда владелец
+ * откроет таблицу — например, IMPORTXML утащит содержимое соседних ячеек на
+ * чужой сервер. Апостроф в начале заставляет Таблицы считать значение текстом
+ * (в самой ячейке он не отображается).
+ */
+function safe_(value, maxLength) {
+  var s = String(value == null ? '' : value).slice(0, maxLength);
+  s = s.replace(/[\u0000-\u001F\u007F]/g, ' ');   // управляющие символы
+  if (/^[=+\-@\t\r]/.test(s)) s = "'" + s;
+  return s;
 }
 
 function getSheet_() {
