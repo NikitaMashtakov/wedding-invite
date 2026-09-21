@@ -490,7 +490,7 @@
                                         <label for="alco90" data-sm-alcoitem="">Свой вариант</label>
                                     </div></div>
                             </div>
-                            <input class="sm-form__input sm-own-answer" type="text" placeholder="Напишите свой вариант" data-sm-anketa-own="" hidden>
+                            <input class="sm-form__input sm-own-answer" type="text" placeholder="Напишите, какой напиток" data-sm-anketa-own="" hidden>
                         </div>
                     </div>
                     <button class="sm-btn" data-sm-anketa-send="1">Отправить</button>
@@ -577,7 +577,7 @@
                                         <label for="alco91" data-sm-alcoitem="">Свой вариант</label>
                                     </div></div>
                         </div>
-                            <input class="sm-form__input sm-own-answer" type="text" placeholder="Напишите свой вариант" data-sm-anketa-own="" hidden>
+                            <input class="sm-form__input sm-own-answer" type="text" placeholder="Напишите, какой напиток" data-sm-anketa-own="" hidden>
                     </div>
                 </div>
                 <button class="sm-btn" data-sm-anketa-send="1">Отправить</button>
@@ -933,6 +933,7 @@
       drinks.push(drinkLabel(v));
     });
 
+    /* «Свой вариант» в списке предпочтений — напиток, которого нет в перечне. */
     var own = data.form ? data.form.querySelector('[data-sm-anketa-own]') : null;
     var payload = {
       name:      data.name,
