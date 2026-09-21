@@ -59,6 +59,12 @@
         font-family:"SMTextsFont",sans-serif;font-weight:300;font-size:15px;line-height:1.45;
         max-width:46ch;margin:14px auto 0;text-align:center;color:#384847;
       }
+      /* Поле «Свой вариант» прячется атрибутом hidden, но шаблон объявляет
+         .sm-form__input{all:unset}, а all сбрасывает и display. Авторское
+         правило перебивает браузерное [hidden]{display:none}, и поле оставалось
+         видимым. Возвращаем скрытие с достаточной специфичностью. */
+      .sm-form .sm-own-answer[hidden]{display:none}
+
       .sm-rsvp-hint.is-error{color:#b3401a}
       /* Подложка блока контактов: полупрозрачная, чтобы фото просвечивало.
          Специфичность выше шаблонной — style.min.css подключается ниже по документу. */
