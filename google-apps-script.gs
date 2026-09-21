@@ -18,7 +18,7 @@
  */
 
 var SHEET_NAME = 'Ответы';
-var HEADERS = ['Время', 'Имя и фамилия', 'Придёт', 'Спутник(ца)', 'Напитки'];
+var HEADERS = ['Время', 'Имя и фамилия', 'Придёт', 'Напитки', 'Свой вариант'];
 
 function doPost(e) {
   try {
@@ -29,8 +29,8 @@ function doPost(e) {
       new Date(),
       safe_(data.name, 120),
       safe_(data.attending, 20),
-      safe_(data.companion, 120),
-      safe_(data.drinks, 200)
+      safe_(data.drinks, 200),
+      safe_(data.own, 300)
     ]);
 
     return json_({ ok: true });
@@ -70,11 +70,21 @@ function getSheet_() {
     sheet = ss.insertSheet(SHEET_NAME);
   }
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(HEADERS);
-    sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
-    sheet.setFrozenRows(1);
+    writeHeaders_(sheet);
+  } else {
+    // Состав столбцов менялся. Если шапка не совпадает с HEADERS, переписываем её,
+    // иначе новые строки уедут не в те колонки. Уже собранные ответы не трогаем.
+    var current = sheet.getRange(1, 1, 1, HEADERS.length).getValues()[0];
+    if (current.join('\u0000') !== HEADERS.join('\u0000')) {
+      writeHeaders_(sheet);
+    }
   }
   return sheet;
+}
+
+function writeHeaders_(sheet) {
+  sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]).setFontWeight('bold');
+  sheet.setFrozenRows(1);
 }
 
 function json_(obj) {

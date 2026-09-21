@@ -60,6 +60,26 @@
         max-width:46ch;margin:14px auto 0;text-align:center;color:#384847;
       }
       .sm-rsvp-hint.is-error{color:#b3401a}
+      /* Подложка блока контактов: полупрозрачная, чтобы фото просвечивало.
+         Специфичность выше шаблонной — style.min.css подключается ниже по документу. */
+      .sm-contact .sm-contact__shell{background-color:#384847c9;border-color:#45493a75}
+
+      /* Телефоны кликабельные: подчёркивание показывает, что по ним можно звонить.
+         Раньше на них висел sm-demo_view с pointer-events:none — наследие демо. */
+      .sm-contact__shell-item a[href^="tel:"]{
+        text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;
+      }
+
+      /* Шаблон задаёт этим блокам жёсткие 358px под экран ровно 390px и прижимает
+         влево. На 402-430px (актуальные айфоны и пиксели) справа рос пустой зазор,
+         на 360px контент вылезал за край. Делаем ширину резиновой и центруем. */
+      @media (max-width:500px){
+        .sm-moment .sm-moment__wrapper-photo{width:100%;max-width:358px;margin-inline:auto}
+        .sm-contact .sm-contact__shell{
+          left:0;right:0;margin-inline:auto;width:calc(100% - 32px);max-width:358px;
+        }
+      }
+
       .sm-moment__wrapper-photo{overflow:hidden}
       @keyframes sm-photo-in{from{opacity:0;transform:scale(1.05)}to{opacity:1;transform:none}}
       @media (prefers-reduced-motion:no-preference){
@@ -384,11 +404,11 @@
 
                 <div class="sm-contact__shell-item" data-sm-contact-bride="">
                     <p class="sm-manropeBold-20-18" data-sm-text="CONTACTS_NAME" title="Никита ">Никита </p>
-                    <a class="sm-manropeLight-20-18 color-1 sm-demo_view" href="tel:79635367119" data-sm-tel="GROOM_TEL">+7 (963) 536-71-19</a>
+                    <a class="sm-manropeLight-20-18 color-1" href="tel:79635367119" data-sm-tel="GROOM_TEL">+7 (963) 536-71-19</a>
                 </div>
                 <div class="sm-contact__shell-item" data-sm-contact-bride="">
                     <p class="sm-manropeBold-20-18" data-sm-text="CONTACTS_NAME" title="Мария ">Мария </p>
-                    <a class="sm-manropeLight-20-18 color-1 sm-demo_view" href="tel:79609569101" data-sm-tel="BRIDE_TEL">+7 (960) 956-91-01</a>
+                    <a class="sm-manropeLight-20-18 color-1" href="tel:79609569101" data-sm-tel="BRIDE_TEL">+7 (960) 956-91-01</a>
                 </div>
             </div>
         </div>
@@ -428,10 +448,6 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="sm-form__block sm-hidden">
-                                <div class="sm-manropeLight-20-18 color-1">Если Вы будете не одни, пожалуйста, заполните поле ниже:</div>
-                                <input class="sm-form__input" type="text" placeholder="Имя и Фамилия Вашего спутника/спутницы" data-sm-anketa-company="">
-                            </div>
                         </div>
                         <div class="sm-form__block" data-sm-anketa-toggle="">
                             <div class="sm-manropeLight-20-18 color-1" data-sm-text="ANKETA_DRINKS_QUESTION" title="Ваши предпочтения">Ваши предпочтения</div>
@@ -462,8 +478,13 @@
                                         <input class="sm-form_checkbox_input" type="checkbox" id="alco80" name="alco[]" value="8">
                                         <span class="sm-form_checkbox_box"></span>
                                         <label for="alco80" data-sm-alcoitem="">Не пью алкоголь</label>
+                                    </div><div class="sm-form_checkbox sm-manropeLight-20-18 color-1">
+                                        <input class="sm-form_checkbox_input" type="checkbox" id="alco90" name="alco[]" value="9" data-sm-own-toggle="">
+                                        <span class="sm-form_checkbox_box"></span>
+                                        <label for="alco90" data-sm-alcoitem="">Свой вариант</label>
                                     </div></div>
                             </div>
+                            <input class="sm-form__input sm-own-answer" type="text" placeholder="Напишите свой вариант" data-sm-anketa-own="" hidden>
                         </div>
                     </div>
                     <button class="sm-btn" data-sm-anketa-send="1">Отправить</button>
@@ -514,10 +535,6 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="sm-form__block sm-hidden">
-                            <div class="sm-manropeLight-20-18 color-1">Если Вы будете не одни, пожалуйста, заполните поле ниже:</div>
-                            <input class="sm-form__input" type="text" placeholder="Имя и Фамилия Вашего спутника(цы)" data-sm-anketa-company="">
-                        </div>
                     </div>
                     <div class="sm-form__block" data-sm-anketa-toggle="">
                         <div class="sm-manropeLight-20-18 color-1" data-sm-text="ANKETA_DRINKS_QUESTION" title="Ваши предпочтения">Ваши предпочтения</div>
@@ -548,8 +565,13 @@
                                         <input class="sm-form_checkbox_input" type="checkbox" id="alco81" name="alco[]" value="8">
                                         <span class="sm-form_checkbox_box"></span>
                                         <label for="alco81" data-sm-alcoitem="">Не пью алкоголь</label>
+                                    </div><div class="sm-form_checkbox sm-manropeLight-20-18 color-1">
+                                        <input class="sm-form_checkbox_input" type="checkbox" id="alco91" name="alco[]" value="9" data-sm-own-toggle="">
+                                        <span class="sm-form_checkbox_box"></span>
+                                        <label for="alco91" data-sm-alcoitem="">Свой вариант</label>
                                     </div></div>
                         </div>
+                            <input class="sm-form__input sm-own-answer" type="text" placeholder="Напишите свой вариант" data-sm-anketa-own="" hidden>
                     </div>
                 </div>
                 <button class="sm-btn" data-sm-anketa-send="1">Отправить</button>
@@ -740,7 +762,6 @@
                                     sendRsvp({
                                         name: name,
                                         answer: answer,
-                                        company: company,
                                         alco: alc,
                                         form: $(this).closest('form')[0]
                                     }, function () { sending = false; });
@@ -873,6 +894,18 @@
     return label ? label.textContent.trim() : String(value);
   }
 
+  /* «Свой вариант»: текстовое поле появляется, только когда отмечен чекбокс. */
+  $(function () {
+    $('[data-sm-own-toggle]').on('change', function () {
+      var form = $(this).closest('form')[0];
+      if (!form) return;
+      var input = form.querySelector('[data-sm-anketa-own]');
+      if (!input) return;
+      input.hidden = !this.checked;
+      if (this.checked) input.focus(); else input.value = '';
+    });
+  });
+
   function showRsvpHint(form, text, isError) {
     if (!form) return;
     var box = form.querySelector('.sm-rsvp-hint');
@@ -889,16 +922,17 @@
   function sendRsvp(data, onFail) {
     var seen = {}, drinks = [];
     (data.alco || []).forEach(function (v) {
-      if (seen[v]) return;            // обе формы на странице, значения могут повториться
-      seen[v] = 1;
+      if (seen[v] || String(v) === '9') return;  // 9 — «Свой вариант», у него отдельный столбец;
+      seen[v] = 1;                                // формы на странице две, значения могут повториться
       drinks.push(drinkLabel(v));
     });
 
+    var own = data.form ? data.form.querySelector('[data-sm-anketa-own]') : null;
     var payload = {
       name:      data.name,
       attending: String(data.answer) === '1' ? 'Да' : 'Нет',
-      companion: data.company || '',
-      drinks:    drinks.join(', ')
+      drinks:    drinks.join(', '),
+      own:       own && !own.hidden ? own.value.trim() : ''
     };
 
     if (!RSVP_ENDPOINT) {
