@@ -624,6 +624,7 @@ a {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  flex-flow: wrap;
 }
 @media (max-width: 500px) {
   .sm-dress-code_wrap-bottom {
@@ -641,9 +642,7 @@ a {
   display: flex;
   justify-content: center;
   gap: 16px;
-  padding: 20px;
-  flex-wrap: nowrap;
-  width: 100%;
+  width: 80%;
 }
 @media (max-width: 500px) {
   [data-sm-text="DRESSCODE_COLORS"] {
@@ -663,15 +662,28 @@ a {
 }
 [data-sm-text="DRESSCODE_COLORS"] > div {
   width: 205px;
-  height: 205px;
+  height: 180px;
   position: relative;
   border-radius: 50%;
   border: 1px solid #45493a;
 }
+
+@media (max-width: 1024px) {
+  [data-sm-text="DRESSCODE_COLORS"] > div {
+    height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  [data-sm-text="DRESSCODE_COLORS"] > div {
+    height: 60px;
+  }
+}
+
 @media (max-width: 500px) {
   [data-sm-text="DRESSCODE_COLORS"] > div {
     width: initial;
-    height: initial;
+    height: 40px;
     flex: 1 1 auto;
   }
 }
